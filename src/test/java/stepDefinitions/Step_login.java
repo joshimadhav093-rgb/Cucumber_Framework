@@ -17,7 +17,7 @@ public class Step_login {
         WebDriverManager.chromedriver().setup();
         driver= new ChromeDriver();
     }
-    @And("user is on login page")
+    @And("Standard user is on login page")
     public void homepage (){
         driver.get("https://www.saucedemo.com/");
         driver.manage().window().maximize();
@@ -36,7 +36,7 @@ public class Step_login {
 
     @Then("user land on home page")
     public void valid_Homepage(){
-
+        driver.quit();
     }
 
 }
