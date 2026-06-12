@@ -10,22 +10,22 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pages.Sauce_login;
 
 public class Step_login {
-    WebDriver driver;
+
     Sauce_login sl;
     @Given("Browser is open")
     public void launch(){
         WebDriverManager.chromedriver().setup();
-        driver= new ChromeDriver();
+        Hooks.driver= new ChromeDriver();
     }
     @And("Standard user is on login page")
     public void homepage (){
-        driver.get("https://www.saucedemo.com/");
-        driver.manage().window().maximize();
+        Hooks.driver.get("https://www.saucedemo.com/");
+        Hooks.driver.manage().window().maximize();
 
     }
     @Then("^User Enter (.*) and (.*)$")
     public void enter_user_pass(String username,String password){
-       sl = new Sauce_login(driver);
+       sl = new Sauce_login(Hooks.driver);
         sl.enter_user(username);
         sl.enter_pass(password);
     }
@@ -36,7 +36,7 @@ public class Step_login {
 
     @Then("user land on home page")
     public void valid_Homepage(){
-        driver.quit();
+        Hooks.driver.quit();
     }
 
 }
