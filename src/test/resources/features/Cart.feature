@@ -3,7 +3,7 @@ Feature:Validated Cart Functinality
   Background:
     Given Browser is open
     And Standard user is on login page
-    Then User Enter "standard_user" and "secret_sauce"
+    Then User Enter standard_user and secret_sauce
     When click on login button
     Then user land on home page
 

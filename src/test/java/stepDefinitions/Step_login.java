@@ -36,7 +36,9 @@ public class Step_login {
 
     @Then("user land on home page")
     public void valid_Homepage(){
-        Hooks.driver.quit();
+        String currentUrl = Hooks.driver.getCurrentUrl();
+
+        System.out.println("Current URL: " + currentUrl);
     }
 
 }

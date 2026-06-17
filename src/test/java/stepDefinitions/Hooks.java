@@ -1,8 +1,10 @@
 package stepDefinitions;
 
+import Utilities.Screenshotutility;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
+import io.cucumber.java.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -28,13 +30,22 @@ public class Hooks {
     }
 
     @After
-    public void teardown() {
+    public void tearDown(Scenario scenario) {
 
-        if(driver != null){
+        if (scenario.isFailed()) {
 
+            Screenshotutility.captureScreenshot(
+                    driver,
+                    scenario.getName().replace(" ", "_")
+            );
+
+            System.out.println("Screenshot captured for failed scenario");
+        }
+
+        if (driver != null) {
             driver.quit();
-
             System.out.println("Browser closed");
         }
     }
+
 }

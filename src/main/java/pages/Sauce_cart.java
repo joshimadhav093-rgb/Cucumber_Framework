@@ -19,10 +19,10 @@ public class Sauce_cart {
         this.driver=driver;
         PageFactory.initElements(driver,this);
     }
-    private static final Logger logger =
-            LogManager.getLogger(Sauce_cart.class);
+    //private static final Logger logger =
+          // LogManager.getLogger(Sauce_cart.class);
 
-    @FindBy(xpath ="//button[@id='add-to-cart-sauce-labs-backpack']")
+    @FindBy(xpath ="//button[text()='Add to cart' and  @name='add-to-cart-sauce-labs-backpack']")
     private WebElement addcartbtn;
     @FindBy(xpath="//a[@class='shopping_cart_link']")
     private WebElement cartsym;
@@ -30,21 +30,19 @@ public class Sauce_cart {
     private WebElement item;
 
     public void addcart(){
-
+        System.out.println("Before Add cart Click");
         addcartbtn.click();
-        boolean display=addcartbtn.isDisplayed();
-        boolean clickable =addcartbtn.isEnabled();
+        System.out.println("After Add cart  Click");
 
     }
     public void cartsymb(){
         cartsym.click();
-        boolean display=addcartbtn.isDisplayed();
-        boolean clickable =addcartbtn.isEnabled();
+
 
     }
     public void itemcart(){
         boolean items=item.isDisplayed();
-        logger.info("Item is Visible in Cart"+items);
+       // logger.info("Item is Visible in Cart"+items);
     }
 
 }
